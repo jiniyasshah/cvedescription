@@ -51,14 +51,17 @@ function App() {
       setDescription((prev) => [...prev, desc]);
       if (
         desc.toLowerCase().includes("arbitrary") ||
-        desc.toLowerCase().includes("arbitrary")
+        desc.includes("RCE") ||
+        (desc.toLowerCase().includes("code") &&
+          desc.toLowerCase().includes("execution"))
       ) {
         setRce((prev) => [...prev, desc]);
       }
 
       if (
         desc.toLowerCase().includes("xss") ||
-        desc.toLowerCase().includes("cross-site")
+        (desc.toLowerCase().includes("cross") &&
+          desc.toLowerCase().includes("site"))
       ) {
         setXSS((prev) => [...prev, desc]);
       }
