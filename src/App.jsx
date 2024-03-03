@@ -10,6 +10,7 @@ function App() {
   const handleCveIdChange = (e) => {
     if (e.target.value === "") {
       setDescription([]);
+      setClear(false);
     }
     setCveId(e.target.value);
     const inputText = e.target.value;
