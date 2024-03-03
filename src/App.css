@@ -18,3 +18,13 @@
 .result {
   width: 80%;
 }
+
+.checkButton {
+  padding-left: 12px;
+  display: flex;
+  flex-direction: row;
+}
+
+.innerButton {
+  padding-right: 10px;
+}
