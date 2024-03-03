@@ -68,7 +68,7 @@ function App() {
       </button>
       <hr />
       <div className="result">
-        <h2>CVE Descriptions: {cveArray.length}</h2>
+        <h2>CVE Descriptions: {description.length}</h2>
         {description.map((item, index) => (
           <p key={index} style={{ fontSize: "20px" }}>
             <span style={{ color: "orange" }}>{cveArray[index]}</span>
