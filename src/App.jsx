@@ -8,6 +8,9 @@ function App() {
   const [cveArray, setCVEArray] = useState([]);
   const [clear, setClear] = useState(false);
   const handleCveIdChange = (e) => {
+    if (e.target.value === "") {
+      setDescription([]);
+    }
     setCveId(e.target.value);
     const inputText = e.target.value;
     // Split the input string by spaces and filter out any empty strings
