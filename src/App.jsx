@@ -6,7 +6,7 @@ function App() {
   const [cveId, setCveId] = useState("");
   const [description, setDescription] = useState([]); // Initialize as an empty array
   const [cveArray, setCVEArray] = useState([]);
-  const [clear, setClear] = useState(false);
+
   const [rce, setRce] = useState([]);
   const [xss, setXSS] = useState([]);
   const [rceIsChecked, setIsChecked] = useState(false);
@@ -28,7 +28,7 @@ function App() {
       setDescription([]);
       setRce([]);
       setXSS([]);
-      setClear(false);
+
       setIsChecked(false);
       setXSSIsChecked(false);
     }
@@ -42,6 +42,9 @@ function App() {
   };
 
   const handleFetchData = async (item) => {
+    setXSS([]);
+    setDescription([]);
+    setRce([]);
     try {
       const response = await axios.get(
         `https://cveawg.mitre.org/api/cve/${item}`
@@ -74,21 +77,12 @@ function App() {
   const handleStoreArray = () => {
     // Access the cveArray variable for further usage
     console.log("Stored array:", cveArray);
-    setClear(true);
+
     setDescription([]);
-    if (!clear) {
-      cveArray.forEach((item) => {
-        handleFetchData(item);
-      });
-    } else {
-      setCVEArray([]);
-      setCveId("");
-      setRce([]);
-      setXSS([]);
-      setClear(false);
-      setIsChecked(false);
-      setXSSIsChecked(false);
-    }
+
+    cveArray.forEach((item) => {
+      handleFetchData(item);
+    });
 
     // Perform any additional logic or actions with the cveArray
   };
@@ -129,9 +123,7 @@ function App() {
           </div>
         </div>
       </div>
-      <button onClick={handleStoreArray}>
-        {clear && cveId ? "Clear" : "Fetch"} Descriptions
-      </button>
+      <button onClick={handleStoreArray}>Fetch Descriptions</button>
       <hr />
 
       <div className="result">
